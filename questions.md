@@ -60,6 +60,7 @@ spec:
   containers:
   - name: mycontainer
     image: nginx:latest
+```
 ---
 **Q13. What is `etcd` and its role in Kubernetes?**  
 **A13.** `etcd` is a distributed key-value store that stores cluster configuration data. Kubernetes uses `etcd` to persist cluster state and configuration details reliably.
