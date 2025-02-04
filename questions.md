@@ -60,3 +60,49 @@ spec:
   containers:
   - name: mycontainer
     image: nginx:latest
+---
+**Q13. What is `etcd` and its role in Kubernetes?**  
+**A13.** `etcd` is a distributed key-value store that stores cluster configuration data. Kubernetes uses `etcd` to persist cluster state and configuration details reliably.
+
+**Q14. How do Labels and Annotations differ in Kubernetes?**  
+**A14.**  
+- **Labels** are key/value pairs used for grouping and selecting objects (for example, by Services or `kubectl` queries).  
+- **Annotations** provide non-identifying metadata for storing additional information. They are not used for selection.
+
+---
+
+**Q15. What is a Namespace, and why is it used?**  
+**A15.** A Namespace is a way to divide cluster resources between multiple users (via resource quota). It helps organize objects and is often used for environment isolation, multi-tenancy, and policy enforcement.
+
+---
+
+**Q16. How do you set resource quotas in Kubernetes?**  
+**A16.** You create a `ResourceQuota` object in a specific Namespace. It defines limits on resource consumption, like CPU, memory, and object counts, within that Namespace.
+
+---
+
+**Q17. What is the ClusterIP?**  
+**A17.** A ClusterIP is the default Service type in Kubernetes. It makes the Service reachable only from within the cluster via an internal IP. It’s useful for internal communication between Pods.
+
+---
+
+**Q18. Why use ConfigMaps and Secrets instead of baking config into Docker images?**  
+**A18.**  
+- Externalizing configuration makes images reusable.  
+- Secrets protect sensitive data (passwords, tokens) differently from ConfigMaps.  
+- Both can be updated without rebuilding container images, adhering to best practices for security and flexibility.
+
+---
+
+**Q19. How is Kubernetes extended by CRDs (Custom Resource Definitions)?**  
+**A19.** CRDs let you create your own custom API resources that appear and behave like built-in Kubernetes resources. This extensibility enables you to define custom controllers and Operators that manage application-specific logic.
+
+---
+
+**Q20. What happens when you run `kubectl apply -f <file>`?**  
+**A20.**  
+1. Kubernetes reads the manifest in `<file>`.  
+2. The manifest is sent to the API Server.  
+3. The API Server stores or updates the desired state in `etcd`.  
+4. Kubernetes controllers reconcile the actual state to match the desired state defined in the manifest.
+
